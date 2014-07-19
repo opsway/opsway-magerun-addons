@@ -1,0 +1,8 @@
+autoloaders:
+  OpsWay: %module%/src
+
+commands:
+   customCommands:
+       - OpsWay\Magento\Command\Sys\Email\ListCommand
+       - OpsWay\Magento\Command\Sys\Email\SendCommand
+       - OpsWay\Magento\Command\Sys\Email\CheckCommand
