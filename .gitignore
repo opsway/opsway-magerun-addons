@@ -1,0 +1,52 @@
+*.*~
+*.bak
+*.swp
+*~.nib
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ignore any diff/patch files
+*.diff
+*.patch
+*.log
+
+# External tool builders
+.externalToolBuilders/
+
+# IDE-specific
+.buildpath
+*.launch
+nbproject/
+.idea/
+.project
+.metadata
+local.properties
+.classpath
+.settings/
+.loadpath
+.cproject
+
+# and some random server stuff
+.bash_history
+.bashrc
+.lesshst
+.mysql_history
+.ssh
+.subversion
+.toprc
+.viminfo
+*.sublime-workspace
+sftp-config.json
+
+# Magento specifig
+.modgit/
+.vagrant/
+app/etc/local.xml
+downloader/
+errors/
+media/*
+pear
+pear/
+pkginfo/
+var/*
