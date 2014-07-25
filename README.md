@@ -31,7 +31,12 @@ New Additional Commands
     $ n98-magerun.phar sys:email:list
 
 * sys : email : send - sending any transactional email through magento on test email address
-    $ n98-magerun.phar sys:email:send
+    $ n98-magerun.phar sys:email:send [--template[="..."]] [type] [email]
+    Where params:
+      **type** = "trans" (send transactional email) OR "magento" (send magento email) OR "php" (send email by php settings);
+      **email**  - where to send test email
+      **template** - should be value template ID or Code from sys-email-list command
 
 * sys : email : check - checking and showing magento settings for sending emails
     $ n98-magerun.phar sys:email:check
+

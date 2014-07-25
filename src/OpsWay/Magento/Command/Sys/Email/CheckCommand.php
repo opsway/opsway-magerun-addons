@@ -6,6 +6,7 @@ use N98\Magento\Command\AbstractMagentoCommand,
     Symfony\Component\Console\Input\InputInterface,
     Symfony\Component\Console\Output\OutputInterface,
     Symfony\Component\Console\Input\InputArgument,
+    Symfony\Component\Console\Input\StringInput,
     Symfony\Component\Console\Input\InputOption;
 
 class CheckCommand extends AbstractMagentoCommand
@@ -27,7 +28,16 @@ class CheckCommand extends AbstractMagentoCommand
     {
         $this->detectMagento($output);
         if ($this->initMagento()) {
-            $output->writeln("Hello world!\n");
+
+            $this->getApplication()->setAutoExit(false);
+
+            $output->writeln("<info>Magento System Email settings:</info>");
+            $this->getApplication()->run(new StringInput('config:get "*smtp*"'), $output);
+
+            $output->writeln("\n<info>Magento General Email settings:</info>");
+            $this->getApplication()->run(new StringInput('config:get "*email*"'), $output);
+
+            $this->getApplication()->setAutoExit(true);
         }
     }
 }

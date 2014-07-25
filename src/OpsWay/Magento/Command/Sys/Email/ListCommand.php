@@ -27,7 +27,26 @@ class ListCommand extends AbstractMagentoCommand
     {
         $this->detectMagento($output);
         if ($this->initMagento()) {
-            $output->writeln("Hello world!\n");
+
+            $emailTemplate = \Mage::getModel('core/email_template');
+            $dataTable = array();
+            foreach ($emailTemplate->getCollection() as $item){
+                $dataTable[] = array($item->getId(),$item->getTemplateCode());
+            }
+
+            $output->writeln('<info>Custom email template:</info>');
+            $this->getHelper('table')
+                        ->setHeaders(array('ID','Template Name'))
+                        ->setRows($dataTable)
+                        ->render($output);
+
+            $output->writeln('<info>Default email template:</info>');
+            $dataTable = $emailTemplate::getDefaultTemplatesAsOptionsArray();
+            $this->getHelper('table')
+                        ->setHeaders(array('Template Code','Template Label'))
+                        ->setRows($dataTable)
+                        ->render($output);
+
         }
     }
 }
